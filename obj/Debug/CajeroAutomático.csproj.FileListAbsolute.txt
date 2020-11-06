@@ -1,0 +1,22 @@
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\bin\Debug\CajeroAutomático.exe.config
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\bin\Debug\CajeroAutomático.exe
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\bin\Debug\CajeroAutomático.pdb
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\obj\Debug\CajeroAutomático.csprojAssemblyReference.cache
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\obj\Debug\CajeroAutomático.Form1.resources
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\obj\Debug\CajeroAutomático.Properties.Resources.resources
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\obj\Debug\CajeroAutomático.csproj.GenerateResource.cache
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\obj\Debug\CajeroAutomático.csproj.CoreCompileInputs.cache
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\obj\Debug\CajeroAutomático.exe
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\obj\Debug\CajeroAutomático.pdb
+D:\mendo\Documents\Sergio Mendoza\Google Drive\IDTS Modelo\3 semestre\Programación orientada a objetos\Parcial 2\CajeroAutomático\obj\Debug\CajeroAutomático.Admin.resources
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\bin\Debug\CajeroAutomático.exe.config
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\bin\Debug\CajeroAutomático.exe
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\bin\Debug\CajeroAutomático.pdb
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\obj\Debug\CajeroAutomático.csprojAssemblyReference.cache
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\obj\Debug\CajeroAutomático.Admin.resources
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\obj\Debug\CajeroAutomático.Form1.resources
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\obj\Debug\CajeroAutomático.Properties.Resources.resources
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\obj\Debug\CajeroAutomático.csproj.GenerateResource.cache
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\obj\Debug\CajeroAutomático.csproj.CoreCompileInputs.cache
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\obj\Debug\CajeroAutomático.exe
+C:\Users\Roger\Desktop\Roger\Universidad\POO\SimuladorVendingMachine\obj\Debug\CajeroAutomático.pdb
