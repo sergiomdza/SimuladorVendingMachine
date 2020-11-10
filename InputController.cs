@@ -6,19 +6,33 @@ namespace IC
 {
     public class InputController
     {
-        private string input = string.Empty;
+        private string inputCode= string.Empty;
+        private bool tiempoAire = false;
 
-        public string Input { get => input;}
+        public string Input { get => inputCode;}
+        public bool TiempoAire { get => tiempoAire; set => tiempoAire = value; }
 
-        public void setInput(List<string> arreglo)
+        //Input Codigo
+        public void AgregarInput(string entrada)
         {
-            string conta = "";
-            foreach (string x in arreglo)
+            if(TiempoAire && inputCode.Length<10)
             {
-                conta = conta + x;
+                inputCode += entrada;
             }
-
-            input = conta;
+            else if (inputCode.Length <3)
+            {
+                inputCode += entrada;
+            }
         }
+        public void DelLastInputChar()
+        {
+            inputCode = inputCode.Remove(inputCode.Length -1);
+        }
+
+        public void resetInput()
+        {
+            inputCode = string.Empty;
+        }
+
     }
 }

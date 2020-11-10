@@ -9,25 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Productos;
 using CC;
-
+using IC;
 
 namespace CajeroAutomático
 {
     public partial class Form1 : Form
     {
-        List<string> codigoInput = new List<string>();
-<<<<<<< HEAD
-=======
         Servicio Air = new Servicio();
-//       List<int> dinero = new List<int>();
-
-        //Datos Ingresador por el admin        
-//        List<Producto> papas = new List<Producto>();
->>>>>>> d02a5e0f3d73c4630f7afd3d4a50b5ab26f061cd
 
         //Temporales de debug
-        int[] monedas = new int[7] { 1, 2, 5, 10, 20, 50, 100};
-        int DineroActual = 0;
 
         Producto ProductoSeleccionado;
 
@@ -44,72 +34,68 @@ namespace CajeroAutomático
             //Para borrar úlitmo elemento
             if ((sender as Button).Text == "DEL")
             {
-                if (codigoInput.Count > 0)
+                if (controlCentral.InputController.Input.Length > 0)
                 {
-                    codigoInput.RemoveAt(codigoInput.Count - 1);
+                    controlCentral.InputController.DelLastInputChar();
                 }
             }
             //Cualquier otro imput
-            else if (codigoInput.Count < 3)
+            else
             {                
-                codigoInput.Add((sender as Button).Text);                
+                controlCentral.InputController.AgregarInput((sender as Button).Text);                
             }
-            controlCentral.InputController.setInput(codigoInput);
-            //Buscar Producto
-            ProductoSeleccionado = controlCentral.ProductManager.BuscarProductoID(Convert.ToInt32(controlCentral.InputController.Input));
 
-            //Actualizar             
-            controlCentral.DisplayControl.Display(Pantalla, controlCentral.MoneyManager.Dinero.ToString(), controlCentral.InputController.Input);
+            if (!controlCentral.InputController.TiempoAire && controlCentral.InputController.Input.Length > 0)
+            {
+                ProductoSeleccionado = controlCentral.ProductManager.BuscarProductoID(Convert.ToInt32(controlCentral.InputController.Input));
+            }
+            ActualizarPantalla();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            int numero = Convert.ToInt32(cbMonedas.SelectedIndex); 
-            //dinero.Add(monedas[numero]);
-            controlCentral.MoneyManager.ingresarDinero(monedas[numero]);
-            controlCentral.DisplayControl.Display(Pantalla, controlCentral.MoneyManager.Dinero.ToString(), controlCentral.InputController.Input);
-            DineroActual += numero;
-            
-            if(ProductoSeleccionado!= null)
-            {
-                controlCentral.MoneyManager.RevisarDinero(DineroActual, ProductoSeleccionado, Pantalla);
-            }
-        }
-
-<<<<<<< HEAD
-        
-=======
-        private void lblPapas5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            int numero = Convert.ToInt32(cbMonedas.SelectedIndex);
+            //Agregar dinero
+            // controlCentral.MoneyManager.ingresarDinero(Convert.ToInt32(cbMonedas.SelectedValue));
+            lblDebug.Text = "DebugLabel: " + Convert.ToString(cbMonedas.SelectedValue);
+            ActualizarPantalla();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(cmbServicio.SelectedIndex == 1)
+            {
+                controlCentral.InputController.TiempoAire = true;
+            }
+            else if(cmbServicio.SelectedIndex == 0)
+            {
+                controlCentral.InputController.TiempoAire = false;
+            }
+            controlCentral.InputController.resetInput();
+            ActualizarPantalla();
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
-            string number = txtNumber.Text;
-            int numero = Convert.ToInt32(cmdnumbermoney.SelectedIndex);
-
-            Air.telefono = number;
-            Air.concepto = "Recarga";
-            Air.cantidad = monedas[numero];
-
-            Pantalla.Text = $"{Air.concepto} realizada al: {Air.telefono} de: {Air.cantidad}";
+            if (controlCentral.InputController.TiempoAire)
+            {
+                controlCentral.DisplayControl.TiempoAireExitoso(Pantalla, controlCentral.InputController.Input, controlCentral.MoneyManager.DineroActual);
+            }
+            else {
+                controlCentral.MoneyManager.RevisarDineroProducto(controlCentral.MoneyManager.DineroActual, ProductoSeleccionado, Pantalla);
+            }
         }
->>>>>>> d02a5e0f3d73c4630f7afd3d4a50b5ab26f061cd
+
+        private void ActualizarPantalla()
+        {
+            if (controlCentral.InputController.TiempoAire)
+            {
+                controlCentral.DisplayControl.RecargaTiempoAire(Pantalla, controlCentral.InputController.Input, controlCentral.MoneyManager.DineroActual);
+            }
+            else
+            {
+                controlCentral.DisplayControl.Producto(Pantalla, controlCentral.MoneyManager.DineroActual.ToString(), controlCentral.InputController.Input);
+            }
+        }
     }
 }

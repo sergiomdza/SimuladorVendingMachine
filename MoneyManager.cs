@@ -29,7 +29,7 @@ namespace CajeroAutomático
         private int dineroInput;
         private int cambio;
 
-        public int Dinero { get => dineroInput; set => dineroInput = value; }
+        public int DineroActual { get => dineroInput; set => dineroInput = value; }
         public int Cambio { get => cambio; set => cambio = value;}
 
         public void ingresarDinero(int dinero)
@@ -175,7 +175,7 @@ namespace CajeroAutomático
         public delegate void ProductoPagado(Producto producto, RichTextBox pantalla);
 
         public event ProductoPagado eventoProductoPagado;
-        public void RevisarDinero( int cantidadDinero, Producto producto, RichTextBox pantalla)
+        public void RevisarDineroProducto( int cantidadDinero, Producto producto, RichTextBox pantalla)
         {
             if (producto.CostoProducto <= cantidadDinero)
             {
