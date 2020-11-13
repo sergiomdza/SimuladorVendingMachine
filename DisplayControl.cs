@@ -26,8 +26,20 @@ namespace DC
         }
 
         public void TiempoAireExitoso(RichTextBox pantalla, string numero, int dinero)
-        {
-            pantalla.Text = string.Format($"Se han recargado: {dinero} pesos al numero: {numero} correctamente");
+        {  
+            if (numero.Length == 10 && dinero > 0)
+            {
+                pantalla.Text = string.Format($"Se han recargado: {dinero} pesos al numero: {numero} correctamente");
+            }
+            else if (numero.Length != 10)
+            {
+                pantalla.Text = string.Format($"El número ingresado es incorrecto, favor de ingresar un número válido de 10 dígitos");
+            }
+            else if(dinero <= 0)
+            {
+                pantalla.Text = string.Format($"Favor de ingresar dinero para poder hacer la transacción");
+            }
+            
         }
     }
 }

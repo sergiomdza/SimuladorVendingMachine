@@ -1,21 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
-namespace IC
+
+namespace CajeroAutomático
 {
     public class InputController
     {
         private string inputCode= string.Empty;
-        private bool tiempoAire = false;
+        
 
         public string Input { get => inputCode;}
-        public bool TiempoAire { get => tiempoAire; set => tiempoAire = value; }
+        
 
         //Input Codigo
-        public void AgregarInput(string entrada)
+        public void AgregarInput(string entrada, Type tipo)
         {
-            if(TiempoAire && inputCode.Length<10)
+            if(tipo == typeof(CajeroAutomático.Servicio) && inputCode.Length<10)
             {
                 inputCode += entrada;
             }

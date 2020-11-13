@@ -11,9 +11,6 @@ namespace CajeroAutomático
     {
         public string telefono;
         public string compañia;
-
-        
-
         public void OrdernarServicio(int Telefono, string Compañía)
         {
 

@@ -1,6 +1,8 @@
-﻿namespace Productos
+﻿using CajeroAutomático;
+
+namespace Productos
 {
-    public class Producto
+    public class Producto : Experiencia
     {
         int idProducto;
         string nombreProducto;

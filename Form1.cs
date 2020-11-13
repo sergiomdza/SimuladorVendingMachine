@@ -9,14 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Productos;
 using CC;
-using IC;
+
 
 namespace CajeroAutomático
 {
     public partial class Form1 : Form
     {
-        Servicio Air = new Servicio();
+        private static System.Timers.Timer TimerSegundos;
 
+        private enum experiencia { producto = 0, tiempoaire = 1};
+        int[] monedas = new int[] {1,2,5,10,20,50,100,200,500 };
         //Temporales de debug
 
         Producto ProductoSeleccionado;
@@ -27,7 +29,15 @@ namespace CajeroAutomático
         public Form1()
         {
             InitializeComponent();
-            
+            Label.CheckForIllegalCrossThreadCalls = false;
+            TimerSegundos = new System.Timers.Timer(1000);
+            TimerSegundos.Elapsed += ActualizarHora;
+            TimerSegundos.AutoReset = true;
+            TimerSegundos.Enabled = true;
+        }
+        private void ActualizarHora(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            lblHora.Text = "Hora Actual: " + DateTime.Now.ToString("hh:mm:ss");
         }
         private void BotonApretado(object sender, EventArgs e)
         {
@@ -42,10 +52,10 @@ namespace CajeroAutomático
             //Cualquier otro imput
             else
             {                
-                controlCentral.InputController.AgregarInput((sender as Button).Text);                
+                controlCentral.InputController.AgregarInput((sender as Button).Text, controlCentral.ExperienciaSeleccionada.GetType());                
             }
 
-            if (!controlCentral.InputController.TiempoAire && controlCentral.InputController.Input.Length > 0)
+            if (controlCentral.ExperienciaSeleccionada.GetType() == typeof(Productos.Producto) && controlCentral.InputController.Input.Length > 0)
             {
                 ProductoSeleccionado = controlCentral.ProductManager.BuscarProductoID(Convert.ToInt32(controlCentral.InputController.Input));
             }
@@ -56,20 +66,20 @@ namespace CajeroAutomático
         {
             int numero = Convert.ToInt32(cbMonedas.SelectedIndex);
             //Agregar dinero
-            // controlCentral.MoneyManager.ingresarDinero(Convert.ToInt32(cbMonedas.SelectedValue));
-            lblDebug.Text = "DebugLabel: " + Convert.ToString(cbMonedas.SelectedValue);
+            controlCentral.MoneyManager.ingresarDinero(Convert.ToInt32(monedas[cbMonedas.SelectedIndex]));
+            lblDebug.Text = "DebugLabel: " + Convert.ToString(monedas[cbMonedas.SelectedIndex]);
             ActualizarPantalla();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cmbServicio.SelectedIndex == 1)
-            {
-                controlCentral.InputController.TiempoAire = true;
+            {                
+                controlCentral.ExperienciaSeleccionada = new Servicio();
             }
             else if(cmbServicio.SelectedIndex == 0)
             {
-                controlCentral.InputController.TiempoAire = false;
+                controlCentral.ExperienciaSeleccionada = new Producto();
             }
             controlCentral.InputController.resetInput();
             ActualizarPantalla();
@@ -77,18 +87,12 @@ namespace CajeroAutomático
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (controlCentral.InputController.TiempoAire)
-            {
-                controlCentral.DisplayControl.TiempoAireExitoso(Pantalla, controlCentral.InputController.Input, controlCentral.MoneyManager.DineroActual);
-            }
-            else {
-                controlCentral.MoneyManager.RevisarDineroProducto(controlCentral.MoneyManager.DineroActual, ProductoSeleccionado, Pantalla);
-            }
+           controlCentral.Revisar(Pantalla, ProductoSeleccionado);
         }
 
         private void ActualizarPantalla()
         {
-            if (controlCentral.InputController.TiempoAire)
+            if (controlCentral.ExperienciaSeleccionada.GetType() == typeof(CajeroAutomático.Servicio))
             {
                 controlCentral.DisplayControl.RecargaTiempoAire(Pantalla, controlCentral.InputController.Input, controlCentral.MoneyManager.DineroActual);
             }
