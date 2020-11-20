@@ -16,7 +16,6 @@ namespace CajeroAutomático
     public partial class Form1 : Form
     {
         private static System.Timers.Timer TimerSegundos;
-
         private enum experiencia { producto = 0, tiempoaire = 1};
         int[] monedas = new int[] {1,2,5,10,20,50,100,200,500 };
         //Temporales de debug
@@ -24,7 +23,8 @@ namespace CajeroAutomático
         Producto ProductoSeleccionado;
 
         //instaciamos Clase Central Controller
-        ControlCentral controlCentral = new ControlCentral();        
+        ControlCentral controlCentral = new ControlCentral();
+        List<List<string>> Datos = new List<List<string>>();
 
         public Form1()
         {
@@ -34,6 +34,18 @@ namespace CajeroAutomático
             TimerSegundos.Elapsed += ActualizarHora;
             TimerSegundos.AutoReset = true;
             TimerSegundos.Enabled = true;
+            Datos = controlCentral.DatosProductos;
+            ProductosEnForm();
+            cmbServicio.SelectedItem = "Producto";
+        }
+        private void ProductosEnForm()
+        {
+            lblPapas1.Text = string.Format($"${Datos[0][2]}  codigo: {Datos[0][0]}");
+            lblPapas2.Text = string.Format($"${Datos[1][2]}  codigo: {Datos[1][0]}");
+            lblPapas3.Text = string.Format($"${Datos[2][2]}  codigo: {Datos[2][0]}");
+            lblPapas4.Text = string.Format($"${Datos[3][2]}  codigo: {Datos[3][0]}");
+            lblPapas5.Text = string.Format($"${Datos[4][2]}  codigo: {Datos[4][0]}");
+            lblPapas6.Text = string.Format($"${Datos[5][2]}  codigo: {Datos[5][0]}");
         }
         private void ActualizarHora(object sender, System.Timers.ElapsedEventArgs e)
         {

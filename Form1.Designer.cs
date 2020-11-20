@@ -46,6 +46,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblHora = new System.Windows.Forms.Label();
             this.lblDebug = new System.Windows.Forms.Label();
             this.lblMonedas = new System.Windows.Forms.Label();
             this.cbMonedas = new System.Windows.Forms.ComboBox();
@@ -62,7 +63,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnNumero1 = new System.Windows.Forms.Button();
-            this.lblHora = new System.Windows.Forms.Label();
             btnAgregar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -293,6 +293,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input";
             // 
+            // lblHora
+            // 
+            this.lblHora.AutoSize = true;
+            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.Location = new System.Drawing.Point(17, 29);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(118, 24);
+            this.lblHora.TabIndex = 20;
+            this.lblHora.Text = "Hora Actual: ";
+            // 
             // lblDebug
             // 
             this.lblDebug.AutoSize = true;
@@ -485,16 +495,6 @@
             this.btnNumero1.Text = "1";
             this.btnNumero1.UseVisualStyleBackColor = true;
             this.btnNumero1.Click += new System.EventHandler(this.BotonApretado);
-            // 
-            // lblHora
-            // 
-            this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.Location = new System.Drawing.Point(17, 29);
-            this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(118, 24);
-            this.lblHora.TabIndex = 20;
-            this.lblHora.Text = "Hora Actual: ";
             // 
             // Form1
             // 

@@ -9,12 +9,28 @@ namespace CajeroAutomático
 {
     public class ProductManager
     {
-        List<Producto> ListaProductos = new List<Producto>();
-        public ProductManager()
+        List<List<string>> Datos = new List<List<string>>();
+        List <Producto> ListaProductos = new List<Producto>();
+        public ProductManager(List<List<string>> datos)
         {
-            LLenarProductos();
+            Datos = datos;
+            LLenarProductos2();
         }
 
+        private void LLenarProductos2()
+        {
+            foreach (List<string> e in Datos)
+            {
+                ListaProductos.Add(new Producto(
+                idProducto: Convert.ToInt32(e[0]),
+                nombreProducto: e[1],
+                costoProducto: Convert.ToInt32(e[2]),
+                marca: "Barcel",
+                x: 0,
+                y: 0
+                ));
+            }
+        }
         private void LLenarProductos()
         {
             ListaProductos.Add(new Producto(
@@ -66,8 +82,8 @@ namespace CajeroAutomático
                 y: 1
             ));
             ListaProductos.Add(new Producto(
-                idProducto: 101,
-                nombreProducto: "Cheetos Azules",
+                idProducto: 203,
+                nombreProducto: "Cheetos Assado",
                 costoProducto: 10,
                 marca: "Barcel",
                 x: 2,
