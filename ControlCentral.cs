@@ -24,7 +24,7 @@ namespace CC
 
         public ControlCentral()
         {
-            DbManager = new DBManager();
+            DbManager = DBManager.GetInstance();
             FetchDatos();
             inputControl = new InputController();
             displayControl = new DisplayControl();
@@ -48,12 +48,14 @@ namespace CC
                 DisplayControl.TiempoAireExitoso(Pantalla, InputController.Input, MoneyManager.DineroActual);
                 DbManager.insertTransaccion("Tiempo Aire", MoneyManager.DineroActual);
                 MoneyManager.DineroActual = 0;
+                inputControl.Input = string.Empty;
             }
             else if (MoneyManager.DineroActual >= 0 && ProductoSeleccionado != null)
             {
                 MoneyManager.RevisarDineroProducto(MoneyManager.DineroActual, ProductoSeleccionado, Pantalla);
                 DbManager.insertTransaccion("Producto Vendido", MoneyManager.DineroActual);
                 MoneyManager.DineroActual = 0;
+                inputControl.Input = string.Empty;
             }
         }
         public DisplayControl DisplayControl { get => displayControl; set => displayControl = value;}

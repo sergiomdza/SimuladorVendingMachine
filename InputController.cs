@@ -11,8 +11,7 @@ namespace CajeroAutomático
         private string inputCode= string.Empty;
         
 
-        public string Input { get => inputCode;}
-        
+        public string Input { get => inputCode; set => inputCode = value; }
 
         //Input Codigo
         public void AgregarInput(string entrada, Type tipo)

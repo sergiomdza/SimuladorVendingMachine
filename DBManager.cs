@@ -11,13 +11,23 @@ namespace CajeroAutomático
     public class DBManager
     {
         MySqlConnection connection;
+        private static DBManager instancia;
 
-        public DBManager()
+        private DBManager()
         {
             string connectionString = "Server=localhost;Database=vending_machine;Uid=root;Pwd=2212;";
             connection = new MySqlConnection(connectionString);
         }
 
+        public static DBManager GetInstance()
+        {
+            if(instancia == null)
+            {
+                instancia = new DBManager();
+            }
+            return instancia;
+
+        }
         public List<List<string>> GetProducts()
         {
             DataTable dataTableProductos = null;
